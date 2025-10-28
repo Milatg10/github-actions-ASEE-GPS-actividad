@@ -7,31 +7,24 @@ on:
 
 jobs:
   generar-codigo:
-    runs-on: ubuntu-latest  # Utiliza la última versión de Ubuntu
+    runs-on: ubuntu-latest 
 
     steps:
-      # Paso 1: Descargar el código del repositorio
       - name: Descargar código en runner
         uses: actions/checkout@v4
 
-      # Paso 2: Configurar Java 17
       - name: Configurar Java 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # Paso 3: Ejecutar el comando para generar el código con OpenAPI Generator
-      # Usamos el generador correcto: python-flask (con guion)
       - name: Ejecutar comando
         run: java -jar openapi-generator-cli.jar generate -i api.yaml -g python-flask -o ./openapi_server
 
-      # Paso 4: Comprimir el directorio generado
-      - name: Comprimir el directorio generado
-        run: |
-          zip -r openapi_server.zip openapi_server
+      - name: Ejecutar comando 2
+        run: zip -r openapi_server.zip openapi_server
 
-      # Paso 5: Subir el archivo comprimido como un artefacto
       - name: Subir artefacto
         uses: actions/upload-artifact@v4
         with:
