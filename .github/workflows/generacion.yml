@@ -22,9 +22,9 @@ jobs:
           distribution: 'temurin'
 
       # Paso 3: Ejecutar el comando para generar el código con OpenAPI Generator
-      # Usamos rutas relativas directamente para archivos en la raíz del repositorio
+      # Usamos el generador correcto: python-flask (con guion)
       - name: Ejecutar comando
-        run: java -jar openapi-generator-cli.jar generate -i api.yaml -g pythonflask -o ./openapi_server
+        run: java -jar openapi-generator-cli.jar generate -i api.yaml -g python-flask -o ./openapi_server
 
       # Paso 4: Comprimir el directorio generado
       - name: Comprimir el directorio generado
