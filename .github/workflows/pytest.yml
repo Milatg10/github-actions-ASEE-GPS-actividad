@@ -16,7 +16,7 @@ jobs:
       - name: Python ultima version
         uses: actions/setup-python@v4
         with:
-          python-version: 'latest'
+          python-version: '3.x'
 
       - name: Instalar dependencias
         run:  pip install -r requirements.txt
